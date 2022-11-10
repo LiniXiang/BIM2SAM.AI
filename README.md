@@ -16,7 +16,7 @@ print(tf.__version__)
 ```
 %cd /content
 
-!git clone https://github.com/NHERI-SimCenter/BIM2SAM.AI.git
+!git clone git@github.com:LiniXiang/BIM2SAM.AI.git
 ```
 ####
 
