@@ -61,7 +61,7 @@ print("Loaded model from disk")
 
 
 # evaluate loaded model on test data
-optimizer = tf.train.AdamOptimizer(1e-4)
+optimizer = tf.optimizers.Adam(1e-4)
 loaded_model.compile(loss='mse', optimizer=optimizer, metrics=['mae', 'mse'])
 Ap, An, Bn, beta, N = loaded_model.predict(featuresSimple)[0]
 N = int(round(N))
