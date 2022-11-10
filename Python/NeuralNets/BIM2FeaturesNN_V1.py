@@ -21,7 +21,7 @@ from tensorflow.keras import layers
 print(tf.__version__)
 
 # fix random seed for reproducibility
-tf.set_random_seed(1234)
+tf.random.set_seed(1234)
 
 
 # define paths
