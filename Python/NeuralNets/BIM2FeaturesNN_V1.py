@@ -100,8 +100,8 @@ def build_model():
     layers.Dense(5)
   ])
   #optimizer = tf.train.RMSPropOptimizer(0.001)
-  optimizer = tf.train.AdamOptimizer(1e-4)
-  model.compile(loss='mse', optimizer=optimizer, metrics=['mae', 'mse'])
+  optimizer = tf.optimizers.Adam(1e-4)
+  model.compile(loss='mse', optimizer=optimizer, metrics=['mean_absolute_error', 'mse'])
   return model
 
 
@@ -173,8 +173,8 @@ plot_history(history)
 plt.savefig('../../Documents/Figures/NN_ContinuumWall_TrainingLoss_V1.png')
 
 
-loss, mae, mse = model.evaluate(normed_test_data, test_labels, verbose=0)
-print("Testing set Mean Abs Error: {:5.2f} Ap+An+Bn+beta+N".format(mae))
+loss, mean_absolute_error, mse = model.evaluate(normed_test_data, test_labels, verbose=0)
+print("Testing set Mean Abs Error: {:5.2f} Ap+An+Bn+beta+N".format(mean_absolute_error))
 
 
 
