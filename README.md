@@ -1,36 +1,39 @@
-# BIM2SAM.AI
-Building Information Models (BIM) to Structural Analysis Models (SAM) Using Artificial Intelligence
-
-![image](Documents/BIM2SAM.png)
+#The execution code was modified to implement in the Colab environment
 
 ### Build instructions
-##### 1. Build the SAMBuilder and TclBuilder excutables
+##### 1. No need to compile it, builders are in /SAMBuilder and /TclBuilder.
 
-```
-sh build
-```
 ##### 2. Install Tensorflow if you haven't. 
 
 ```
-pip install tensorflow
+%tensorflow_version 2.x
+import tensorflow as tf
+print(tf.__version__)
 ```
-###### Or do it in a virtual environment (virtualenv is recommended.) Tensorflow does not work with Python 3.7 or above at the time this code is made, so Python 3.6 is recommended. 
+###### Colab environment has tensorflow version 2.0 or higher installed.
+
+####
+```
+%cd /content
+
+!git clone https://github.com/NHERI-SimCenter/BIM2SAM.AI.git
+```
+####
 
 ### Training the neural net
 ```
-cd Python/NeuralNets
-python BIM2FeaturesNN_V1.py
+%cd /content/BIM2SAM.AI/Python/NeuralNets
+!python BIM2FeaturesNN_V1.py
 ```
 ### Use the neural net in a BIM->SAM->tcl pipeline. This will generate a tcl file that can be run in OpenSees:
 ```
-cd Python
-python main.py
+%cd /content/BIM2SAM.AI/Python
+!sudo chmod 744 /content/BIM2SAM.AI/Cpp/SAMBuilder/SAMBuilder
+!sudo chmod 744 /content/BIM2SAM.AI/Cpp/TclBuilder/TclBuilder
+!python main.py
 ```
 
 ### How to cite
 Charles Wang, Caigui Jiang, Stella X. Yu, Frank McKenna, & Kincho H. Law. (2019, October 18). NHERI-SimCenter/BIM2SAM.AI: Release v1.0 (Version 1.0). Zenodo. http://doi.org/10.5281/zenodo.3509957
 
-### Acknowledgement
-
-This material is based upon work supported by the National Science Foundation under Grant No. 1612843.
 
